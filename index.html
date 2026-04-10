@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { background: #000; color: #fff; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif; }
+        #game-container { width: 960px; height: 540px; max-width: 95%; border: 2px solid #333; border-radius: 10px; overflow: hidden; }
+        #game { width: 100%; height: 100%; }
+        .status { margin-top: 10px; color: #888; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="game"></div>
+    </div>
+    <div class="status" id="log">Aguardando início... (Arquivos de PSP são grandes, tenha paciência)</div>
+
+<script type="text/javascript">
+    // Configurar variáveis ANTES de carregar o loader.js
+    window.EJS_player = '#game';
+    window.EJS_core = 'psp';
+    window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+    window.EJS_threads = true;
+    window.EJS_startOnLoaded = false;
+    window.EJS_mouse_sensitivity = 1;
+
+    // URL do jogo com proxy melhor
+    var gameLink = 'https://github.com/machadoluizmiguel5-lab/joo/releases/download/jogos/Crash.-.Mind.over.Mutant.USA.En.Fr.iso';
+    window.EJS_gameUrl = 'https://cors.isomorphic-git.org/' + encodeURIComponent(gameLink);
+</script>
+
+<script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
+<script type="text/javascript">
+    // Aguardar o emulador estar pronto e atualizar o status
+    if (window.EJS) {
+        document.getElementById('log').innerHTML = "Clique em PLAY. O download começará em segundo plano.";
+    } else {
+        setTimeout(() => {
+            document.getElementById('log').innerHTML = "Clique em PLAY. O download começará em segundo plano.";
+        }, 500);
+    }
+</script>
+
+</body>
+</html>
